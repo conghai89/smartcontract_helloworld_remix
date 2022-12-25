@@ -219,7 +219,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Auction_version1_asm2.sol": "Auction"
+			"contracts/Auction_version1_asm2.sol": "Auction_FX17394"
 		},
 		"evmVersion": "byzantium",
 		"libraries": {},
@@ -231,9 +231,9 @@
 	},
 	"sources": {
 		"contracts/Auction_version1_asm2.sol": {
-			"keccak256": "0xb2866b5d457f6cff5994296148d273ecf35e3610b8c8c58ab0dcff43b0b87239",
+			"keccak256": "0x4d480c004cb923585bc330406cb9fd02b2f4043d71e5d6f46a353d0557d2f11d",
 			"urls": [
-				"bzzr://5f0597c935b01c69ac73ef0afcf1caa62a16492a540456e299c5b4ac973c6546"
+				"bzzr://fe777759d13156512f4a5dc427ff8dcd6e412b6a5f45629d3741a5ff0af9bd41"
 			]
 		}
 	},

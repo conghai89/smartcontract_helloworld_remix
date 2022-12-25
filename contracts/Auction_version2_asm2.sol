@@ -49,10 +49,19 @@ contract Auction_FX17394 {
         state = State.CREATED;
         // ** End code here. ** /
     }
+
+    modifier onlyAdmin(){
+        require(msg.sender == auctioneer, "Only auctioneer can do that");
+        _;
+    }
     
+    modifier instate(State expectedState ){
+        require(state == expectedState, "state not met");
+        _;
+    }
     
     // Register new Bidder
-    function register(address _account, uint8 _token) public { 
+    function register(address _account, uint8 _token) onlyAdmin instate(State.CREATED) public { 
         
                 
         // Task #2 - Register the bidder
@@ -72,13 +81,12 @@ contract Auction_FX17394 {
 
     
     // Start the session.
-    function startSession() public {
+    function startSession() public onlyAdmin instate(State.CREATED){
         state = State.STARTED;
-    }
-    
+    }   
 
     
-    function bid(uint8 _price) public {
+    function bid(uint8 _price) public instate(State.STARTED){
         
         // Task #3 - Bid by Bidders
         // + Check the price with currentPirce and minimumStep. Revert if invalid.
@@ -89,7 +97,7 @@ contract Auction_FX17394 {
         IBidder storage currentBidder = bidders[bidderAddr];
         
         // ** Start code here.  ** /
-        require(_price > (currentPrice + rule.minimumStep), "Your Auction price is lower");
+        require(_price >= (currentPrice + rule.minimumStep), "Your Auction price is lower");
         require(currentBidder.token >= _price, "You not enough token to bid");
         currentBidder.deposit += _price;
         currentBidder.token -= _price;
@@ -108,7 +116,7 @@ contract Auction_FX17394 {
         announcementTimes = 0;
     }
     
-    function announce() public {
+    function announce() public onlyAdmin instate(State.STARTED){
 
         
         // Task #4 - Handle announcement.
@@ -124,7 +132,7 @@ contract Auction_FX17394 {
         // ** End code here. **/
     }
     
-    function getDeposit() public {
+    function getDeposit() public instate(State.CLOSING){
         
         // Task #5 - Handle get Deposit.
         // + Allow bidders (except Winner) to withdraw their deposit 
@@ -132,7 +140,7 @@ contract Auction_FX17394 {
         
         // ** Start code here.  ** /
         // HINT: Remember to decrease totalDeposit.
-        require (msg.sender !=currentWinner, "You won thi auction so yout can't do this");
+        require (msg.sender !=currentWinner, "You won this auction so yout can't do this");
         
         IBidder storage currentBidder = bidders[msg.sender];
         currentBidder.deposit = 0;
@@ -146,10 +154,6 @@ contract Auction_FX17394 {
     }
 }
 
-
-
-
 // PART 2 - Using Modifier to:
 // - Check if the action (startSession, register, bid, annoucement, getDeposit) can be done in current State.
 // - Check if the current user can do the action.
-
