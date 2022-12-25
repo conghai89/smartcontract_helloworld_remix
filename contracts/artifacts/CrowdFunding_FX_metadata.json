@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Lab6_Escrow_FX17394.sol": "CrowdFunding_FX"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Lab6_Escrow_FX17394.sol": {
+			"keccak256": "0x419c4a37a7d5a7b9f8c9e89b46317fffd2a3106ab57ac740acf917dec1053a41",
+			"urls": [
+				"bzz-raw://b2ac0bd01c5907f48754fcc74dbf0f6188d5b8f8a512fd0888a8462d46dfd233",
+				"dweb:/ipfs/QmVfoQU97kz17ntdYisXUuWBBKNwQPu4AXWQSLZwxs5Gss"
+			]
+		}
+	},
+	"version": 1
+}
